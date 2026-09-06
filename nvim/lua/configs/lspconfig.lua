@@ -1,0 +1,84 @@
+require("nvchad.configs.lspconfig").defaults()
+
+local servers = { "html", "cssls", "yamlls", "pyright", "bashls" }
+
+-- OpenShift / Kubernetes YAML
+vim.lsp.config("yamlls", {
+  settings = {
+    redhat = { telemetry = { enabled = false } },
+    yaml = {
+      validate = true,
+      hover = true,
+      completion = true,
+      format = { enable = false }, -- use conform/prettier instead
+      schemas = {
+        -- Kubernetes + OpenShift (both are k8s-style manifests)
+        ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.2-standalone-strict/all.json"] = {
+          "*.k8s.yaml",
+          "*.k8s.yml",
+          "deployment*.yaml",
+          "deployment*.yml",
+          "service*.yaml",
+          "route*.yaml",
+          "dc*.yaml",
+          "bc*.yaml",
+          "is*.yaml",
+          "templates/*.yaml",
+          "openshift/*.yaml",
+          "openshift/*.yml",
+          "k8s/*.yaml",
+        },
+        -- GitHub workflows, etc. still validate generically
+        ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*",
+      },
+      -- tolerate CloudFormation / Tekton / OpenShift custom tags
+      customTags = {
+        "!And",
+        "!If",
+        "!Not",
+        "!Equals",
+        "!Or",
+        "!FindInMap sequence",
+        "!Base64",
+        "!Cidr",
+        "!Ref",
+        "!Sub",
+        "!GetAtt",
+        "!GetAZs",
+        "!ImportValue",
+        "!Select",
+        "!Split",
+        "!Join sequence",
+      },
+    },
+  },
+})
+
+-- Python
+vim.lsp.config("pyright", {
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "openFilesOnly",
+        typeCheckingMode = "basic",
+      },
+    },
+  },
+})
+
+-- Bash + .env (bashls also attaches to .env when filetype allows)
+vim.lsp.config("bashls", {
+  filetypes = { "sh", "bash", "zsh" },
+  settings = {
+    bashIde = {
+      shellcheckPath = "",
+      globPattern = "*@(.sh|.inc|.bash|.command|.build|.env|.env.*)",
+    },
+  },
+})
+
+vim.lsp.enable(servers)
+
+-- read :h vim.lsp.config for changing options of lsp servers 
