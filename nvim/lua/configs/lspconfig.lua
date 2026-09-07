@@ -1,9 +1,12 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls", "yamlls", "pyright", "bashls" }
+local servers = { "html", "cssls", "yaml-language-server", "pyright", "bashls" }
 
 -- OpenShift / Kubernetes YAML
-vim.lsp.config("yamlls", {
+local yaml_config = {
+  cmd = { "yaml-language-server", "--stdio" },
+  filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" },
+  root_markers = { ".git" },
   settings = {
     redhat = { telemetry = { enabled = false } },
     yaml = {
@@ -52,7 +55,10 @@ vim.lsp.config("yamlls", {
       },
     },
   },
-})
+}
+
+vim.lsp.config("yaml-language-server", yaml_config)
+vim.lsp.config("yamlls", yaml_config)
 
 -- Python
 vim.lsp.config("pyright", {

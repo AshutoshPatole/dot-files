@@ -60,7 +60,7 @@ lua/
 LSP servers are enabled in `lua/configs/lspconfig.lua`:
 
 ```lua
-{ "html", "cssls", "yamlls", "pyright", "bashls" }
+{ "html", "cssls", "yaml-language-server", "pyright", "bashls" }
 ```
 
 Install them (plus formatters) via `:Mason`: `yaml-language-server`,

@@ -7,11 +7,24 @@ local M = {}
 
 M.base46 = {
 	theme = "catppuccin",
+}
 
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
+M.mason = {
+  pkgs = {
+    "yaml-language-server",
+    "pyright",
+    "bash-language-server",
+    "lua-language-server",
+    "html-lsp",
+    "css-lsp",
+    "prettier",
+    "yamlfmt",
+    "stylua",
+    "shfmt",
+    "ruff",
+    "black",
+    "taplo",
+  },
 }
 
 -- M.nvdash = { load_on_startup = true }
