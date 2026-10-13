@@ -1,0 +1,6 @@
+.DS_Store
+*.local
+*.darwin
+*.linux
+*.backup*
+.zshrc.backup

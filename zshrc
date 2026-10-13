@@ -124,7 +124,20 @@ alias lt="eza --tree --icons"
 alias vi="nvim"
 alias cat="bat"
 alias cats="bat -pp"
+alias tf="terraform"
 
+# Local binaries
+export PATH="$HOME/.local/bin:$PATH"
 
-# Added by Antigravity CLI installer
-export PATH="/Users/ashutosh/.local/bin:$PATH"
+# nvm (Node Version Manager) - autoload node/npm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# ~/.zshrc.local: secrets + machine-specific PATHs
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+case "$(uname -s)" in
+  Darwin) [[ -f ~/.zshrc.darwin ]] && source ~/.zshrc.darwin ;;
+  Linux)  [[ -f ~/.zshrc.linux ]] && source ~/.zshrc.linux ;;
+esac
+
