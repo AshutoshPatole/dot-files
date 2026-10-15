@@ -12,6 +12,10 @@ vim.filetype.add {
     build = "bash",
     -- treat *.env files as dotenv
     env = "dotenv",
+    -- terraform / hcl (explicit; complements built-in detection)
+    tf = "terraform",
+    tfvars = "terraform-vars",
+    hcl = "hcl",
   },
   pattern = {
     ["%.env%..*"] = "dotenv",

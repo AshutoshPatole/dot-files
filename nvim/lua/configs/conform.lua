@@ -14,6 +14,8 @@ local options = {
     sh = { "shfmt" },
     bash = { "shfmt" },
     dotenv = {},
+    -- Terraform (runs `terraform fmt`)
+    terraform = { "terraform_fmt" },
   },
 
   -- format_on_save = {

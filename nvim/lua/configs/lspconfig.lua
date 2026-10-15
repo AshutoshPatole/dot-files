@@ -1,6 +1,6 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls", "yaml-language-server", "pyright", "bashls" }
+local servers = { "html", "cssls", "yaml-language-server", "pyright", "bashls", "terraformls", "tflint" }
 
 -- OpenShift / Kubernetes YAML
 local yaml_config = {
@@ -83,6 +83,13 @@ vim.lsp.config("bashls", {
       globPattern = "*@(.sh|.inc|.bash|.command|.build|.env|.env.*)",
     },
   },
+})
+
+-- Terraform: terraform-ls for intelligence, tflint for linting
+-- (both attach to *.tf; terraform-vars covers *.tfvars)
+vim.lsp.config("terraformls", {
+  filetypes = { "terraform", "terraform-vars" },
+  root_markers = { ".terraform", ".git" },
 })
 
 vim.lsp.enable(servers)

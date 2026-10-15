@@ -24,6 +24,8 @@ M.mason = {
     "ruff",
     "black",
     "taplo",
+    "terraform-ls",
+    "tflint",
   },
 }
 

@@ -28,6 +28,8 @@ return {
         "yaml", "json", "toml",
         "python", "bash", "dockerfile",
         "dotenv", "ini",
+        -- terraform / hcl
+        "terraform", "hcl",
   		},
   	},
   },
