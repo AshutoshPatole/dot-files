@@ -125,7 +125,7 @@ alias vi="nvim"
 alias cat="bat"
 alias cats="bat -pp"
 alias tf="terraform"
-
+alias rm="rm -v"
 # Local binaries
 export PATH="$HOME/.local/bin:$PATH"
 
