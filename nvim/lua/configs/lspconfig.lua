@@ -1,6 +1,6 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls", "yaml-language-server", "pyright", "bashls", "terraformls", "tflint" }
+local servers = { "html", "cssls", "yaml-language-server", "pyright", "bashls", "terraformls", "tflint", "gopls" }
 
 -- OpenShift / Kubernetes YAML
 local yaml_config = {
@@ -70,6 +70,25 @@ vim.lsp.config("pyright", {
         diagnosticMode = "openFilesOnly",
         typeCheckingMode = "basic",
       },
+    },
+  },
+})
+
+-- Go
+vim.lsp.config("gopls", {
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  settings = {
+    gopls = {
+      gofumpt = true,
+      analyses = {
+        unusedparams = true,
+        unusedwrite = true,
+        shadow = true,
+      },
+      staticcheck = true,
+      usePlaceholders = true,
+      completeUnimported = true,
+      buildFlags = { "-mod=readonly" },
     },
   },
 })

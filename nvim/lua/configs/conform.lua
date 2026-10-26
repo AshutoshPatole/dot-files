@@ -16,6 +16,8 @@ local options = {
     dotenv = {},
     -- Terraform (runs `terraform fmt`)
     terraform = { "terraform_fmt" },
+    -- Go (gofumpt needs to be on PATH; falls back to gopls formatting via LSP)
+    go = { "gofumpt", "goimports", stop_after_first = true },
   },
 
   -- format_on_save = {

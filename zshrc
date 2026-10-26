@@ -141,3 +141,4 @@ case "$(uname -s)" in
   Linux)  [[ -f ~/.zshrc.linux ]] && source ~/.zshrc.linux ;;
 esac
 
+export PATH=$PATH:$(go env GOPATH)/bin
